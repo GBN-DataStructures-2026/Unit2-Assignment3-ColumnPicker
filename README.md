@@ -3,10 +3,10 @@
 ## Overview
 In this final Karel recursive assignment, you will program a robot to analyze a world containing vertical columns of beepers (`RandomColumns.kwld`). 
 
-* **Column Layout:** Columns start on **Street 2**, extend up to **8 streets high** (up to Street 9), and are spaced across avenues[cite: 2].
-* **Goal:** Count the total number of beepers in each column and place a pile containing that exact total on **Street 1** directly below the column[cite: 2].
-* **Example:** On Street 1, Avenue 2, the robot should place a pile of 5 beepers[cite: 2]. On Street 1, Avenue 3, the robot should place 8 beepers[cite: 2].
-* **Termination:** A single beeper placed on **Street 1** marks the end of the columns you must process[cite: 2].
+* **Column Layout:** Columns start on **Street 2**, extend up to **8 streets high** (up to Street 9), and are spaced across avenues.
+* **Goal:** Count the total number of beepers in each column and place a pile containing that exact total on **Street 1** directly below the column.
+* **Example:** On Street 1, Avenue 2, the robot should place a pile of 5 beepers. On Street 1, Avenue 3, the robot should place 8 beepers.
+* **Termination:** A single beeper placed on **Street 1** marks the end of the columns you must process.
 
 ---
 
@@ -41,10 +41,10 @@ Do **not** attempt to write this entire program inside one giant method. Good pr
 
 Consider decomposing your solution into the following functional pieces:
 
-* **`countAndPlacePile()`**[cite: 2]: Coordinates counting a single column and placing the resulting total at the base[cite: 2].
-* **`countColumn(int numStreets)`**[cite: 2]: Recursively navigates up a column of length `numStreets`[cite: 2], accumulates the total beepers, and returns the total integer count[cite: 2, 3].
+* **`countAndPlacePile()`**: Coordinates counting a single column and placing the resulting total at the base.
+* **`countColumn(int numStreets)`**: Recursively navigates up a column of length `numStreets`, accumulates the total beepers, and returns the total integer count.
 * **`countPile()`**: Recursively picks up all beepers on a single corner, counts them, replaces them during stack unwinding, and returns the count.
-* **`putNBeepers(int n)`**[cite: 2]: Recursively places `n` beepers on the current corner[cite: 2].
+* **`putNBeepers(int n)`**: Recursively places `n` beepers on the current corner.
 * **Movement Helpers:** Utilities such as `turnAround()` or `turnRight()` to keep your code clean and readable.
 
 ---
@@ -52,8 +52,8 @@ Consider decomposing your solution into the following functional pieces:
 ## Requirements & Constraints
 
 * **Strictly No Loops:** You may **not** use `while` or `for` loops anywhere in your implementation. All movement, counting, and column iteration must be handled recursively.
-* **State Preservation:** The original layout of beepers in every column must remain completely unchanged when your program finishes[cite: 2].
-* **Return-Value Accumulation:** Use recursive method return values to pass counts back through the call stack during execution[cite: 3].
+* **State Preservation:** The original layout of beepers in every column must remain completely unchanged when your program finishes.
+* **Return-Value Accumulation:** Use recursive method return values to pass counts back through the call stack during execution.
 
 ---
 
