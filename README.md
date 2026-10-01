@@ -1,9 +1,12 @@
 # Unit 2 - Assignment 3: Column Picker
 
 ## Overview
-In this final Karel recursive assignment, you will program a robot to analyze a world containing vertical columns of beepers (`RandomColumns.kwld`). Each column starts on Street 2 and extends up to 8 streets high.
+In this final Karel recursive assignment, you will program a robot to analyze a world containing vertical columns of beepers (`RandomColumns.kwld`). 
 
-Your robot must count the total number of beepers in each column and place a pile containing that exact count at the base of the column on Street 1. The original beeper arrangement in the columns must remain completely unchanged when finished.
+* **Column Layout:** Columns start on **Street 2**, extend up to **8 streets high** (up to Street 9), and are spaced across avenues[cite: 2].
+* **Goal:** Count the total number of beepers in each column and place a pile containing that exact total on **Street 1** directly below the column[cite: 2].
+* **Example:** On Street 1, Avenue 2, the robot should place a pile of 5 beepers[cite: 2]. On Street 1, Avenue 3, the robot should place 8 beepers[cite: 2].
+* **Termination:** A single beeper placed on **Street 1** marks the end of the columns you must process[cite: 2].
 
 ---
 
@@ -32,22 +35,25 @@ java -cp "lib/*;." Driver
 
 ---
 
-## Your Task
+## Suggested Architecture & Decomposition
 
-Complete `ColumnPicker.java` by implementing recursive methods to count and place beepers across all columns.
+Do **not** attempt to write this entire program inside one giant method. Good program design breaks complex tasks down into small, single-purpose helper methods. 
 
-### Requirements & Objectives:
-1. **Column Processing:** Process each vertical column from Avenue 1 moving East.
-2. **State Preservation:** Count all beepers in a column up to 8 streets high, but ensure all original beepers in the column are replaced exactly as they were.
-3. **Beeper Placement:** Place a single pile on Street 1 at the base of each column containing the total count of beepers found in that column.
-4. **Termination:** Stop processing and turn off when the robot encounters a single indicator beeper placed on Street 1.
+Consider decomposing your solution into the following functional pieces:
+
+* **`countAndPlacePile()`**[cite: 2]: Coordinates counting a single column and placing the resulting total at the base[cite: 2].
+* **`countColumn(int numStreets)`**[cite: 2]: Recursively navigates up a column of length `numStreets`[cite: 2], accumulates the total beepers, and returns the total integer count[cite: 2, 3].
+* **`countPile()`**: Recursively picks up all beepers on a single corner, counts them, replaces them during stack unwinding, and returns the count.
+* **`putNBeepers(int n)`**[cite: 2]: Recursively places `n` beepers on the current corner[cite: 2].
+* **Movement Helpers:** Utilities such as `turnAround()` or `turnRight()` to keep your code clean and readable.
 
 ---
 
-## Constraints & Rules
+## Requirements & Constraints
 
-* **Strictly No Loops:** You may **not** use `while` or `for` loops anywhere in your implementation. All iteration and counting must be handled recursively.
-* **Return-Value Recursion:** Use method return values to pass counts back down the call stack during the unwinding phase.
+* **Strictly No Loops:** You may **not** use `while` or `for` loops anywhere in your implementation. All movement, counting, and column iteration must be handled recursively.
+* **State Preservation:** The original layout of beepers in every column must remain completely unchanged when your program finishes[cite: 2].
+* **Return-Value Accumulation:** Use recursive method return values to pass counts back through the call stack during execution[cite: 3].
 
 ---
 
